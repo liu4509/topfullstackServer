@@ -6,6 +6,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "startAdmin:dev": "nest start -w admin",
+    "startServer:dev": "nest start -w server",
     "build": "nest build",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
@@ -23,8 +25,15 @@
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/swagger": "^6.3.0",
+    "@typegoose/typegoose": "^11.0.0",
+    "@types/mongoose": "^5.11.97",
+    "mongoose": "^7.0.3",
+    "nestjs-mongoose-crud": "^2.1.2",
+    "nestjs-typegoose": "^7.1.38",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "swagger-ui-express": "^4.6.2"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
