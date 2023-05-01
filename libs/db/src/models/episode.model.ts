@@ -11,15 +11,15 @@ import { modelOptions, prop } from '@typegoose/typegoose';
 
 // 用户模型
 // 导出用户的类
-export class User {
+export class Episode {
   // @Api 开头都是给 swagger 文档用的
   // @prop 装饰属性
   // 定义属性的名字
-  @ApiProperty({ description: '用户名' })
+  @ApiProperty({ description: '课时名称' })
   @prop()
-  username: string;
+  name: string;
 
-  @ApiProperty({ description: '密码' })
+  @ApiProperty({ description: '文件地址' })
   @prop()
-  password: string;
+  file: string;
 }

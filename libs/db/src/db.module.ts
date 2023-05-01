@@ -3,9 +3,11 @@ import { DbService } from './db.service';
 
 import { TypegooseModule } from 'nestjs-typegoose';
 import { User } from './models/user.model';
+import { Course } from './models/course.model';
+import { Episode } from './models/episode.model';
 
 // 统一引用
-const models = TypegooseModule.forFeature([User]);
+const models = TypegooseModule.forFeature([User, Course, Episode]);
 
 // @Global() 装饰 标记为全局引用
 @Global()

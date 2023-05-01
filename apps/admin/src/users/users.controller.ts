@@ -1,6 +1,7 @@
 import { User } from '@libs/db/models/user.model';
 import { Controller } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { ReturnModelType } from '@typegoose/typegoose';
 import { Crud } from 'nestjs-mongoose-crud';
 import { InjectModel } from 'nestjs-typegoose';
 
@@ -12,5 +13,8 @@ import { InjectModel } from 'nestjs-typegoose';
 @ApiTags('用户')
 export class UsersController {
   // 引用模块 crud
-  constructor(@InjectModel(User) private readonly model) {}
+  constructor(
+    @InjectModel(User)
+    private readonly model: ReturnModelType<typeof User>,
+  ) {}
 }
