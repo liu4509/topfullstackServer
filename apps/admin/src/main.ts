@@ -1,10 +1,17 @@
 import { NestFactory } from '@nestjs/core';
 import { AdminModule } from './admin.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AdminModule);
-
+  // 明确指定使用是哪一个框架 通过泛型
+  const app = await NestFactory.create<NestExpressApplication>(AdminModule);
+  app.enableCors();
+  // 静态文件托管
+  app.useStaticAssets('uploads', {
+    // 前缀
+    prefix: '/uploads',
+  });
   // swagger nestjs 官网配置
   const config = new DocumentBuilder()
     .setTitle('全栈之巅-后台管理 API')

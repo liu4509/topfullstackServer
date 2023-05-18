@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Ref, modelOptions, prop } from '@typegoose/typegoose';
-import { Episode } from './episode.model';
+import { modelOptions, prop } from '@typegoose/typegoose';
+// import { Ref, modelOptions, prop } from '@typegoose/typegoose';
+// import { Episode } from './episode.model';
 
 // mongoose配置
 @modelOptions({
@@ -23,12 +24,12 @@ export class Course {
   @ApiProperty({ description: '封面图' })
   @prop()
   cover: string;
-
+  // TODO：需要连课时表一起操作数据库
   // 参考类型 Ref(模型类) 关联 Episode 模型
-  @ApiProperty({ description: '课时[]' })
+  // @ApiProperty({ description: '课时[]' })
   // 真正给 mongoose 用的
   // TODO: 后期可能出现 循环引用 互相依赖 导致值为空 可以转字符串 'Episode'
-  @prop({ ref: 'Episode' })
+  // @prop({ ref: 'Episode' })
   // 类型定义
-  episodes: Ref<Episode>[];
+  // episodes: Ref<Episode>[];
 }

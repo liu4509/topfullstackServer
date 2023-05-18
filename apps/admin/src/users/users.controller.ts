@@ -1,5 +1,5 @@
 import { User } from '@libs/db/models/user.model';
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { Crud } from 'nestjs-mongoose-crud';
@@ -17,4 +17,15 @@ export class UsersController {
     @InjectModel(User)
     private readonly model: ReturnModelType<typeof User>,
   ) {}
+  // 通过服务端获取表格显示
+  @Get('option')
+  option() {
+    return {
+      title: '用户管理',
+      column: [
+        { prop: 'username', label: '用户名称', sortable: true },
+        { prop: 'password', label: '用户密码' },
+      ],
+    };
+  }
 }
