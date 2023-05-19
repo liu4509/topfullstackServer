@@ -8,10 +8,10 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AdminModule);
   app.enableCors();
   // 静态文件托管
-  app.useStaticAssets('uploads', {
-    // 前缀
-    prefix: '/uploads',
-  });
+  // app.useStaticAssets('uploads', {
+  // 前缀
+  //   prefix: '/uploads',
+  // });
   // swagger nestjs 官网配置
   const config = new DocumentBuilder()
     .setTitle('全栈之巅-后台管理 API')
@@ -21,8 +21,10 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api-docs', app, document);
 
-  await app.listen(3000);
-  console.log('http://127.0.0.1:3000');
-  console.log('http://127.0.0.1:3000/api-docs');
+  const port = process.env.ADMIN_PORT || 3000;
+
+  await app.listen(port);
+  console.log(`${process.env.ADMIN_WEB}:${port}`);
+  console.log(`${process.env.ADMIN_WEB}:${port}/api-docs`);
 }
 bootstrap();

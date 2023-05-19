@@ -45,7 +45,7 @@ export class EpisodesController {
           span: 24,
           type: 'upload',
           width: '120px',
-          action: 'http://127.0.0.1:3000/upload',
+          action: `${process.env.WEB}:${process.env.ADMIN_PORT}/upload`,
         },
       ],
     };

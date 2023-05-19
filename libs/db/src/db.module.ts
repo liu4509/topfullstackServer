@@ -13,7 +13,15 @@ const models = TypegooseModule.forFeature([User, Course, Episode]);
 @Global()
 @Module({
   imports: [
-    TypegooseModule.forRoot('mongodb://localhost/topfullstack', {}),
+    // 异步调用 防止出现模块没有加载数据请求已发起
+    TypegooseModule.forRootAsync({
+      useFactory() {
+        return {
+          uri: process.env.DB,
+        };
+      },
+    }),
+    // TypegooseModule.forRoot('', {}),
     //引用
     models,
   ],
